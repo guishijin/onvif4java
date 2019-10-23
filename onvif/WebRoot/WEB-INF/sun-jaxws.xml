@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<endpoints version="2.0"
+	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+	<endpoint name="DevicePort"
+		implementation="org.onvif.ver10.device.wsdl.DevicePortImpl"
+		url-pattern="/device_service">
+	</endpoint>
+</endpoints>

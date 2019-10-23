@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
+	<handler-chain>
+		<handler>
+			<handler-name>authHandler</handler-name>
+			<handler-class>
+				com.ylsk.onvif.handler.AuthValidationHandler
+			</handler-class>
+		</handler>
+	</handler-chain>
+</handler-chains> 

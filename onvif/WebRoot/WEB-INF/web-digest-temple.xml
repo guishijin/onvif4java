@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>onvif</display-name>
+  <listener>
+    <listener-class>
+  		com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+  	</listener-class>
+  </listener>
+  <servlet>
+    <description>JAX-WS endpoint - DeviceService</description>
+    <display-name>DeviceService</display-name>
+    <servlet-name>DeviceService</servlet-name>
+    <servlet-class>
+  		com.sun.xml.ws.transport.http.servlet.WSServlet
+  	</servlet-class>
+    <load-on-startup>1</load-on-startup>
+        <enabled>true</enabled>
+        <async-supported>true</async-supported>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeviceService</servlet-name>
+    <url-pattern>/device_service</url-pattern>
+  </servlet-mapping>
+    <security-role>
+        <role-name>onvif</role-name>
+    </security-role>
+    <security-constraint>
+        <web-resource-collection>
+        	<web-resource-name>Operator Roles Security</web-resource-name>
+            <description>需要进行角色安全认证的设置</description>
+        	<url-pattern>/device_service</url-pattern>
+            <url-pattern>/ptz_service-disable</url-pattern>
+            <url-pattern>/media_service-disable</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>安全验证</description>
+            <role-name>onvif</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <description>用户授权树</description>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>DIGEST</auth-method>
+        <realm-name>adminonvif</realm-name>
+    </login-config>
+    <filter>
+        <filter-name>onviffilter</filter-name>
+        <filter-class>com.ylsk.onvif.filter.OnvifFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>onviffilter</filter-name>
+        <url-pattern>/onvif/device_service</url-pattern>
+        <servlet-name>DeviceService</servlet-name>
+    </filter-mapping>
+</web-app>

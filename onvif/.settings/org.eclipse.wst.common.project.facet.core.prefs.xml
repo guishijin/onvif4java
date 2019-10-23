@@ -1,0 +1,12 @@
+<root>
+  <facet id="jst.jaxws">
+    <node name="libprov">
+      <attribute name="provider-id" value="runtime-library-provider"/>
+    </node>
+  </facet>
+  <facet id="jst.jaxrs"/>
+  <facet id="java"/>
+  <facet id="jst.web"/>
+  <facet id="jst.web.jstl"/>
+  <facet id="wst.jsdt.web"/>
+</root>
